@@ -1,0 +1,39 @@
+﻿@model IEnumerable<VjezbaVideoteka.Models.Filmovi>
+
+@{
+    ViewBag.Title = "FilmoviZaAdmina";
+}
+
+<h2>FilmoviZaAdmina</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Posudeno)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Posudeno)
+        </td>
+        <td>
+            @Html.ActionLink("Update", "Update",  new { id=item.FilmId }) |
+            @Html.ActionLink("Posudi/Vrati", "Izmjenibool", "IzbrisiFilm", new { id=item.FilmId }) |
+            @Html.ActionLink("Izbrisi Film", "IzbrisiFilm",  new { id=item.FilmId })
+        </td>
+    </tr>
+}
+
+</table>
